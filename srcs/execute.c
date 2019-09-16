@@ -53,7 +53,7 @@ static void	init_instr(t_vm *vm, t_exec *proc)
 	}
 }
 
-static void	check_error_flags(t_vm *vm)
+static void	visual_and_dump(t_vm *vm)
 {
 	int		i;
 
@@ -107,6 +107,6 @@ void		execute(t_vm *vm)
 			}
 			cache = cache->next;
 		}
-		check_error_flags(vm);
+		visual_and_dump(vm);
 	}
 }

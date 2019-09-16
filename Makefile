@@ -22,7 +22,7 @@ SRC		= 	corewar.c additional_func.c validation.c execute.c flags.c read_cor.c \
 IN		=	i_add_and_or_xor_sub.c i_aff.c i_zjmp.c i_fork_lfork.c i_ld_ldi.c \
 			i_live.c i_lld_lldi.c i_st_sti.c \
 
-VISU	=	draw_arenas.c init_visu.c manage_arena_info.c manage_arena.c \
+VISU	=	before_execute.c colors_info.c initialize_visu.c arena.c \
 
 OBJ		=	$(addprefix $(OBJDIR), $(SRC:.c=.o))
 

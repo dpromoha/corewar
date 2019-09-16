@@ -89,7 +89,7 @@ static void				check_magic(t_champion *champ, int fd)
 			}
 }
 
-static void				prog_comment(t_champion **champ, int fd)
+static void				comment_of_player(t_champion **champ, int fd)
 {
 	if (!*champ || ((*champ)->head.prog_size = get_prog_size(fd)) > CHAMP_MAX_SIZE
 			|| get_comment((*champ), fd) == -1 || space_read(fd) == -1)
@@ -111,7 +111,7 @@ static t_champion	*champ_error(char *str, int numb)
 		return (NULL);
 	init_vm(champ, numb);
 	check_magic(champ, fd);
-	prog_comment(&champ, fd);
+	comment_of_player(&champ, fd);
 	if (!champ || !(champ->process_code_player = get_execess_code_player(fd, champ->head.prog_size)))
 	{
 		if (champ)
