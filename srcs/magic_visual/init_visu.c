@@ -169,8 +169,6 @@ void		start_mem_visu(t_vm *vm)
 		return ;
 	vm->visu->arena = NULL;
 	vm->visu->arena_info = NULL;
-	// WINDOW * arena = newwin(y - 16, (x / 3) * 2 + 20, 0, 0);
-    // WINDOW * data = newwin(y - 16, x / 3 - 20, 0, (x / 3) * 2 + 20);
 	if (!(vm->visu->arena = newwin(HEIGHT, WIDTH, 1, 1)))
 		return ;
 	if (!(vm->visu->arena_info = newwin(HEIGHT, WIDTH / 2, 1, WIDTH + 2)))
