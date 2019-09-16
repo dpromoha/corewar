@@ -35,6 +35,10 @@ static void		name_table(t_vm *cor, int *y)
 	*y += 2;
 	wmove(cor->visu->arena_info, *y, 3);
 	wprintw(cor->visu->arena_info, "CYCLE_TO_DIE : %d", cor->cycle_to_die);
+	*y += 2;
+	wmove(cor->visu->arena_info, *y, 3);
+	if (cor->who_is_alive != 0)
+		wprintw(cor->visu->arena_info, "LAST ALIVE : %s", cor->players[cor->who_is_alive - 1]->head.prog_name);
 }
 
 static int				name_players_by_colors(int i)

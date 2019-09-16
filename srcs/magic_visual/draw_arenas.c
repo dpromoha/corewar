@@ -46,7 +46,7 @@ void		how_fast(t_vm *vm)
 	int		key;
 
 	t = clock();
-	while (clock() - t < (unsigned long)100)
+	while (clock() - t < (unsigned long)10000)
 		key = wgetch(stdscr);
 	build_map(vm);
 }
