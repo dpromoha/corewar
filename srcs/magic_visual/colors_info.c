@@ -22,10 +22,10 @@ void	define_all_colors(void)
 static void		name_table(t_vm *cor, int *y)
 {
 	wmove(cor->visu->arena_info, *y, 3);
-	if (!cor->visu->in_move)
-		wprintw(cor->visu->arena_info, "** PAUSED **");
-	else
+	if (cor->visu->in_move == 1)
 		wprintw(cor->visu->arena_info, "** IN MOVE **");
+	else
+		wprintw(cor->visu->arena_info, "** PAUSED **");
 	*y += 4;
 	wmove(cor->visu->arena_info, *y, 3);
 	wprintw(cor->visu->arena_info, "Cycle : %d", cor->cycles);
@@ -84,7 +84,7 @@ void			colors_map(t_vm *cor)
 	wrefresh(cor->visu->arena_info);
 }
 
-void		delete_visu(t_vm *vm)
+void		free_visual(t_vm *vm)
 {
 	if (vm->visu)
 	{

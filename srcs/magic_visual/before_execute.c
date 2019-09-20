@@ -43,11 +43,13 @@ void	visualization(t_vm *vm)
 void		how_fast(t_vm *vm)
 {
 	int		t;
-	int		key;
 
 	t = clock();
 	while (clock() - t < (unsigned long)100)
-		key = wgetch(stdscr);
+	{
+		if (wgetch(stdscr) == ' ')
+			vm->visu->in_move = 0;
+	}
 	build_map(vm);
 }
 
@@ -55,6 +57,8 @@ void	build_map(t_vm *vm)
 {
 	if (vm->cycles != 1 && vm->visu->in_move == 0)
 	{
+		wmove(vm->visu->arena_info, 2, 3);
+		wprintw(vm->visu->arena_info, "** PAUSED ** ");
 		wmove(vm->visu->arena_info, 6, 3);
 		wprintw(vm->visu->arena_info, "Cycle : %d  ", vm->cycles);
 		wrefresh(vm->visu->arena_info);

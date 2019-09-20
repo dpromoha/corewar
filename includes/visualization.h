@@ -46,6 +46,6 @@ void				define_all_colors(void);
 void				how_fast(t_vm *cor);
 void				building_start(t_vm *cor);
 void				colors_map(t_vm *cor);
-void				delete_visu(t_vm *cor);
+void				free_visual(t_vm *cor);
 
 #endif

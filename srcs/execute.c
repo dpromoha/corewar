@@ -76,7 +76,10 @@ static void	visual_and_dump(t_vm *vm)
 		while (vm->visu->in_move == 0)
 		{
 			if (wgetch(stdscr) == ' ')
-				vm->visu->in_move = !vm->visu->in_move;
+			{
+				vm->visu->in_move = 1;
+				how_fast(vm);
+			}
 			build_map(vm);
 		}
 		how_fast(vm);

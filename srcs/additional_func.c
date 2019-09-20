@@ -114,7 +114,7 @@ void			vm_free(t_vm *vm)
 	}
 	vm->procs = NULL;
 	if (vm->take_v == 1)
-		delete_visu(vm);
+		free_visual(vm);
 	system("leaks corewar");
 	exit(0);
 }
