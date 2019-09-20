@@ -40,40 +40,46 @@ void	visualization(t_vm *vm)
 	endwin();
 }
 
-void	button(t_vm *vm)
+void	end_visual(t_vm *vm)
 {
-	if (wgetch(stdscr) == 'q')
-	{
-		clear();
-		free_visual(vm);
-		endwin();
-		system("leaks corewar");
-		exit(0);
-	}
+	clear();
+	free_visual(vm);
+	endwin();
+	system("leaks corewar");
+	exit(0);
+}
+
+static int	what_is_speed(int c)
+{
+	if (c == KEY_RIGHT)
+		return (100);
+	else if (c == KEY_LEFT)
+		return (100000);
+	else
+		return (1000);
 }
 
 void		how_fast(t_vm *vm)
 {
 	int		t;
-	int		start;
-	char	c;
+	int		c;
+	int		speed;
 
-	start = 1001;
+	speed = 0;
 	t = clock();
 	c = wgetch(stdscr);
-	while (clock() - t < (unsigned long)start)
+	if (c == ' ')
 	{
-		if (c == ' ')
-			vm->visu->in_move = 0;
-		else if (c == 'q')
-		{
-			clear();
-			free_visual(vm);
-			endwin();
-			system("leaks corewar");
-			exit(0);
-		}
+		vm->visu->in_move = 0;
+		if (c == 'q')
+			end_visual(vm);
 	}
+	else if (c == 'q')
+		end_visual(vm);
+	else
+		speed = what_is_speed(c);
+	while (clock() - t < (unsigned long)speed)
+		;
 	build_map(vm);
 }
 
