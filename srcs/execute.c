@@ -53,6 +53,20 @@ static void	init_instr(t_vm *vm, t_exec *proc)
 	}
 }
 
+// static void	button(t_vm *vm)
+// {
+// 	if (wgetch(stdscr) == 'q')
+// 	{
+// 		clear();
+// 		free_visual(vm);
+// 		endwin();
+// 		system("leaks corewar");
+// 		exit(0);
+// 	}
+// }
+
+void	button(t_vm *vm);
+
 static void	visual_and_dump(t_vm *vm)
 {
 	int		i;
@@ -75,7 +89,7 @@ static void	visual_and_dump(t_vm *vm)
 	{
 		while (vm->visu->in_move == 0)
 		{
-			if (wgetch(stdscr) == ' ')
+			if (wgetch(stdscr) == ' ')//start game
 			{
 				vm->visu->in_move = 1;
 				how_fast(vm);
@@ -98,7 +112,7 @@ void		execute(t_vm *vm)
 		{
 			if (vm->take_v)
 				vm->visu->attr_arena[cache->op_posit].cursor = true;
-			if (!cache->cycle_before_instr)//start game
+			if (!cache->cycle_before_instr)
 				init_instr(vm, cache);
 			if (!(--(cache->cycle_before_instr)))
 			{

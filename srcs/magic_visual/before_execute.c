@@ -40,15 +40,39 @@ void	visualization(t_vm *vm)
 	endwin();
 }
 
+void	button(t_vm *vm)
+{
+	if (wgetch(stdscr) == 'q')
+	{
+		clear();
+		free_visual(vm);
+		endwin();
+		system("leaks corewar");
+		exit(0);
+	}
+}
+
 void		how_fast(t_vm *vm)
 {
 	int		t;
+	int		start;
+	char	c;
 
+	start = 1001;
 	t = clock();
-	while (clock() - t < (unsigned long)100)
+	c = wgetch(stdscr);
+	while (clock() - t < (unsigned long)start)
 	{
-		if (wgetch(stdscr) == ' ')
+		if (c == ' ')
 			vm->visu->in_move = 0;
+		else if (c == 'q')
+		{
+			clear();
+			free_visual(vm);
+			endwin();
+			system("leaks corewar");
+			exit(0);
+		}
 	}
 	build_map(vm);
 }
