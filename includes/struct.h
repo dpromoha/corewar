@@ -13,6 +13,7 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 # include "corewar.h"
+# include <ncurses.h>
 
 typedef struct			s_argument
 {
@@ -75,6 +76,7 @@ typedef struct			s_vm
 	char				*aff_print;
 	int					quiet;
 	int					flag;
+	WINDOW				*alert_window;
 }						t_vm;
 
 typedef struct			s_op

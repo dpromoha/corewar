@@ -53,11 +53,12 @@ typedef struct		s_visu
 
 void				visualization(t_vm *cor);
 void				start_mem_visu(t_vm *cor);
-void				build_map(t_vm *cor);
+void				build_map(t_vm *cor, char c);
 void				define_all_colors(void);
 void				how_fast(t_vm *cor);
 void				building_start(t_vm *cor);
 void				colors_map(t_vm *cor);
 void				free_visual(t_vm *cor);
+void				end_visual(t_vm *vm);
 
 #endif

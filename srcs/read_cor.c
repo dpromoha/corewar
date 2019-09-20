@@ -42,7 +42,7 @@ void		validation_flag(t_vm *vm, int ac, char **av)
 	while (i < ac)
 	{
 		num_flag(vm, av, ac, i);
-		if (ft_strequ(av[i], "-q"))
+		if (ft_strequ(av[i], "-s"))
 		{
 			if (i + 1 > ac)
 				error_messages(8, vm);
@@ -148,7 +148,7 @@ void			read_cor(t_vm *vm, int ac, char **av)
 	j = 0;
 	while (i < ac && j < vm->what_is_n_player && !(player = 0))
 	{
-		if (ft_strequ(av[i], "-q"))
+		if (ft_strequ(av[i], "-s"))
 		{
 			if (i >= ac - 1 ||
 				(player = ft_atoi(av[i])) > vm->what_is_n_player)

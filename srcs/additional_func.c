@@ -17,10 +17,10 @@ void		help_op(void)
 	ft_printf("help_op:\n\
 \t./corewar [\033[1;35m-dump\033[0m/\033[1;35m-d\033[0m CYCLE] \
 [\033[1;36m-n\033[0m NUMB] [\033[1;32m-v\033[0m PLAYER] \
-[\033[1;32m-q\033[0m PLAYER]\n\
+[\033[1;32m-s\033[0m PLAYER]\n\
 OPTIONS:\n\
 \t[\033[1;32m-v	\033[0m P]\tsee a magic vizualization\n\
-\t[\033[1;32m-q	\033[0m P]\tsilent mode\n\
+\t[\033[1;32m-s	\033[0m P]\tsilent mode\n\
 \t[\033[1;35m-dump	\033[0m C]\tdump memory(32 octets) after N cycles\n\
 \t[\033[1;35m-d	\033[0m C]\tdump memory(64 octets) after N cycles\n\
 \t[\033[1;36m-n	\033[0m N]\tset the number of player\n");

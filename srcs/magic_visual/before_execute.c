@@ -35,6 +35,7 @@ void	visualization(t_vm *vm)
 	define_all_colors();
 	arena_before_start_game(vm);
 	execute(vm);
+	who_is_winner(vm);
 	nodelay(stdscr, false);
 	wgetch(stdscr);
 	endwin();
@@ -70,9 +71,9 @@ void		how_fast(t_vm *vm)
 	c = wgetch(stdscr);
 	if (c == ' ')
 	{
-		vm->visu->in_move = 0;
 		if (c == 'q')
 			end_visual(vm);
+		vm->visu->in_move = 0;
 	}
 	else if (c == 'q')
 		end_visual(vm);
@@ -80,15 +81,17 @@ void		how_fast(t_vm *vm)
 		speed = what_is_speed(c);
 	while (clock() - t < (unsigned long)speed)
 		;
-	build_map(vm);
+	build_map(vm, c);
 }
 
-void	build_map(t_vm *vm)
+void	build_map(t_vm *vm, char c)
 {
 	if (vm->cycles != 1 && vm->visu->in_move == 0)
 	{
 		wmove(vm->visu->arena_info, 2, 3);
 		wprintw(vm->visu->arena_info, "** PAUSED ** ");
+		if (c == 'q')
+			end_visual(vm);
 		wmove(vm->visu->arena_info, 6, 3);
 		wprintw(vm->visu->arena_info, "Cycle : %d  ", vm->cycles);
 		wrefresh(vm->visu->arena_info);

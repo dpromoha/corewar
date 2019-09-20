@@ -76,7 +76,7 @@ int			flags(t_vm *vm, int *ac, char ***av)
 			(*av)++;
 			(*ac)--;
 		}
-		else if (ft_strequ((*av)[0], "-q")
+		else if (ft_strequ((*av)[0], "-s")
 			|| ft_strequ((*av)[0], "-n"))
 			break ;
 		else

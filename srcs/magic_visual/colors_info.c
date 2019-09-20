@@ -25,7 +25,7 @@ static void		name_table(t_vm *cor, int *y)
 	if (cor->visu->in_move == 1)
 		wprintw(cor->visu->arena_info, "** IN MOVE **");
 	else
-		wprintw(cor->visu->arena_info, "** PAUSED **");
+		wprintw(cor->visu->arena_info, "** PLEASE, PRESS SPACE TO START A GAME **");
 	*y += 4;
 	wmove(cor->visu->arena_info, *y, 3);
 	wprintw(cor->visu->arena_info, "Cycle : %d", cor->cycles);
