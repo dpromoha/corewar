@@ -1,11 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   i_fork_lfork.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/20 16:37:54 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/20 16:38:39 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-/*
-** Returns the modified version of an index that insures it is within the scope
-** of the VM.
-*/
-
-int		modificate_index(int new_op_posit)
+int				modificate_index(int new_op_posit)
 {
 	if (new_op_posit < 0)
 		return (MEM_SIZE + (new_op_posit % MEM_SIZE));
@@ -13,7 +20,7 @@ int		modificate_index(int new_op_posit)
 		return (new_op_posit % MEM_SIZE);
 }
 
-void	init_copy(t_vm **cor, t_exec **new, t_exec **original)
+void			init_copy(t_vm **cor, t_exec **new, t_exec **original)
 {
 	(*new) = new_proc();
 	(*cor)->number_process++;
@@ -41,7 +48,7 @@ static t_exec	*process_copying(t_vm *cor, t_exec *original)
 	return (new);
 }
 
-void	i_fork(t_vm *cor, t_exec *proc)
+void			i_fork(t_vm *cor, t_exec *proc)
 {
 	t_argument	a;
 	t_exec		*new_proc;
@@ -50,13 +57,14 @@ void	i_fork(t_vm *cor, t_exec *proc)
 				+ cor->arena[modificate_index(proc->op_posit + 1 + 1)]);
 	new_proc = process_copying(cor, proc);
 	new_proc->cycle_before_instr = 0;
-	new_proc->op_posit = modificate_index(proc->op_posit + (a.arg_1 % op_posit_MOD));
+	new_proc->op_posit = modificate_index(proc->op_posit +
+			(a.arg_1 % OP_POSIT_MOD));
 	new_proc->next = cor->procs;
 	cor->procs = new_proc;
 	proc->length_step = 3;
 }
 
-void	i_lfork(t_vm *cor, t_exec *proc)
+void			i_lfork(t_vm *cor, t_exec *proc)
 {
 	t_argument	a;
 	t_exec		*new_proc;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   additional_func2.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/20 16:33:13 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/20 16:33:24 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 t_exec	*new_proc(void)
@@ -35,7 +47,7 @@ void	delete_proc(t_exec **proc)
 	*proc = NULL;
 }
 
-void			free_struct_player(t_champion **player)
+void	free_struct_player(t_champion **player)
 {
 	if (*player)
 		free((*player)->process_code_player);

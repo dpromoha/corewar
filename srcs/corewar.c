@@ -1,5 +1,6 @@
 #include "corewar.h"
 
+//29 lines
 int			main(int ac, char **av)
 {
 	t_vm	vm;

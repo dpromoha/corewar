@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   visualization.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/20 16:29:10 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/20 16:30:22 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef VISUALIZATION_H
 # define VISUALIZATION_H
 # include "corewar.h"
@@ -25,18 +37,18 @@
 
 typedef struct		s_attr
 {
-	int 	cursor;
-	int		owner;
-	int		live_bright;
-	int		store_bright;
+	int				cursor;
+	int				owner;
+	int				live_bright;
+	int				store_bright;
 }					t_attr;
 
 typedef struct		s_visu
 {
-	WINDOW	*arena;
-	WINDOW	*arena_info;
-	t_attr	attr_arena[MEM_SIZE];
-	int		in_move;
+	WINDOW			*arena;
+	WINDOW			*arena_info;
+	t_attr			attr_arena[MEM_SIZE];
+	int				in_move;
 }					t_visu;
 
 void				visualization(t_vm *cor);

@@ -1,8 +1,16 @@
-#include "corewar.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   i_lld_lldi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/20 16:40:53 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/20 16:43:50 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-** Returns the type of the ith argument following the argcode
-*/
+#include "corewar.h"
 
 static t_arg_type	get_arg_type(unsigned char argcode, int i)
 {
@@ -20,40 +28,37 @@ static t_arg_type	get_arg_type(unsigned char argcode, int i)
 	return (0);
 }
 
-/*
-** Function that gets the correct value depending on the arg type
-*/
-
+//27 lines
 static void			get_arg(t_vm *cor, t_exec *proc, int *arg_op_posit, int i)
 {
 	if (cor->args[i].type == T_REG)
 	{
-		cor->args[i].val = cor->arena[modificate_index(proc->op_posit + *arg_op_posit)];
+		cor->args[i].val = cor->arena[modificate_index(proc->op_posit +
+				*arg_op_posit)];
 		*arg_op_posit += 1;
 	}
 	else if (cor->args[i].type == T_DIR)
 	{
-		cor->args[i].val = (cor->op_tab[proc->operation_code - 1].dir_size == 4) ?
+		cor->args[i].val =
+			(cor->op_tab[proc->operation_code - 1].dir_size == 4) ?
 				return_int_size(cor, proc->op_posit + *arg_op_posit, DIR_SIZE)
-				: (short)(cor->arena[modificate_index(proc->op_posit + *arg_op_posit)] * 256
-				+ cor->arena[modificate_index(proc->op_posit + *arg_op_posit + 1)]);
-		*arg_op_posit += (cor->op_tab[proc->operation_code - 1].dir_size == 0) ? 4
+				: (short)(cor->arena[modificate_index(proc->op_posit +
+							*arg_op_posit)] * 256
+				+ cor->arena[modificate_index(proc->op_posit +
+					*arg_op_posit + 1)]);
+		*arg_op_posit +=
+			(cor->op_tab[proc->operation_code - 1].dir_size == 0) ? 4
 				: cor->op_tab[proc->operation_code - 1].dir_size;
 	}
 	else if (cor->args[i].type == T_IND)
 	{
-		cor->args[i].val = (short)(cor->arena[modificate_index(proc->op_posit + *arg_op_posit)] * 256
-				+ cor->arena[modificate_index(proc->op_posit + *arg_op_posit + 1)]);
+		cor->args[i].val = (short)(cor->arena[modificate_index(proc->op_posit +
+					*arg_op_posit)] * 256
+				+ cor->arena[modificate_index(proc->op_posit +
+					*arg_op_posit + 1)]);
 		*arg_op_posit += 2;
 	}
 }
-
-/*
-** Function that get the values of the arguments necessary for the instruction.
-** The types of accepted arguments for the instruction are passed as variadic
-** arguments of this function. The function returns true if the types of
-** argument are valid, false otherwise.
-*/
 
 int					check_argument(t_vm *cor, t_exec *proc)
 {
@@ -66,7 +71,8 @@ int					check_argument(t_vm *cor, t_exec *proc)
 	i = -1;
 	while (++i < cor->op_tab[proc->operation_code - 1].how_much_arg)
 	{
-		cor->args[i].type = get_arg_type(cor->arena[modificate_index(proc->op_posit
+		cor->args[i].type =
+			get_arg_type(cor->arena[modificate_index(proc->op_posit
 				+ 1)], i);
 		get_arg(cor, proc, &arg_op_posit, i);
 		if (!(cor->args[i].type & cor->op_tab[proc->operation_code - 1].args[i])
@@ -78,7 +84,7 @@ int					check_argument(t_vm *cor, t_exec *proc)
 	return (valid);
 }
 
-void		i_lldi(t_vm *cor, t_exec *proc)
+void				i_lldi(t_vm *cor, t_exec *proc)
 {
 	t_argument	a;
 	int			sum;
@@ -93,15 +99,16 @@ void		i_lldi(t_vm *cor, t_exec *proc)
 		sum = cor->arena[modificate_index(proc->op_posit + a.result)];
 		while (++i < 4)
 		{
-			sum = sum * 256 + cor->arena[modificate_index(proc->op_posit + a.result
-			 + i)];
+			sum = sum * 256 +
+				cor->arena[modificate_index(proc->op_posit + a.result
+						+ i)];
 		}
 		proc->carry = (!sum);
 		to_map(proc->regs[cor->args[2].val - 1], (void *)&sum);
 	}
 }
 
-void		i_lld(t_vm *cor, t_exec *proc)
+void				i_lld(t_vm *cor, t_exec *proc)
 {
 	t_argument	a;
 

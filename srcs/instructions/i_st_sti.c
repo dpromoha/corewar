@@ -29,7 +29,7 @@ int					what_is_argument(t_vm *cor, t_exec *proc, t_arg arg,
 	if (arg.type == T_IND)
 	{
 		if (exist)
-			return (return_int_size(cor, proc->op_posit + arg.val % op_posit_MOD, 4));
+			return (return_int_size(cor, proc->op_posit + arg.val % OP_POSIT_MOD, 4));
 		else
 			return (return_int_size(cor, proc->op_posit + arg.val, 4));
 	}
@@ -69,7 +69,7 @@ void		i_sti(t_vm *cor, t_exec *proc)
 	{
 		a.arg_2 = what_is_argument(cor, proc, cor->args[2], 1);
 		a.arg_1 = what_is_argument(cor, proc, cor->args[1], 1);
-		mapcpy(cor, proc, proc->op_posit + ((a.arg_1 + a.arg_2) % op_posit_MOD),
+		mapcpy(cor, proc, proc->op_posit + ((a.arg_1 + a.arg_2) % OP_POSIT_MOD),
 				proc->regs[cor->args[0].val - 1]);
 	}
 }
@@ -84,7 +84,7 @@ void		i_st(t_vm *cor, t_exec *proc)
 		if (cor->args[1].type == T_REG)
 			to_map(proc->regs[cor->args[1].val - 1], (void *)&a.result);
 		else if (cor->args[1].type == T_IND)
-			mapcpy(cor, proc, proc->op_posit + cor->args[1].val % op_posit_MOD,
+			mapcpy(cor, proc, proc->op_posit + cor->args[1].val % OP_POSIT_MOD,
 					(void *)&a.result);
 	}
 }

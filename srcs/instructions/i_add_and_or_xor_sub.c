@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   i_add_and_or_xor_sub.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/20 16:35:43 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/20 16:36:01 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void		i_add(t_vm *cor, t_exec *proc)
@@ -44,7 +56,7 @@ void		i_or(t_vm *cor, t_exec *proc)
 
 void		i_xor(t_vm *cor, t_exec *proc)
 {
-	t_argument 	a;
+	t_argument	a;
 
 	if (check_argument(cor, proc))
 	{

@@ -53,20 +53,6 @@ static void	init_instr(t_vm *vm, t_exec *proc)
 	}
 }
 
-// static void	button(t_vm *vm)
-// {
-// 	if (wgetch(stdscr) == 'q')
-// 	{
-// 		clear();
-// 		free_visual(vm);
-// 		endwin();
-// 		system("leaks corewar");
-// 		exit(0);
-// 	}
-// }
-
-void	button(t_vm *vm);
-
 static void	visual_and_dump(t_vm *vm)
 {
 	int		i;

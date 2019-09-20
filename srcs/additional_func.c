@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   additional_func.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/20 16:31:02 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/20 16:32:53 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void		help_op(void)
@@ -14,7 +26,7 @@ OPTIONS:\n\
 \t[\033[1;36m-n	\033[0m N]\tset the number of player\n");
 }
 
-void	error_messages(int error_code, t_vm *vm)
+void		error_messages(int error_code, t_vm *vm)
 {
 	error_code == 1 ? ft_printf(R"ERROR: wrong number of player (need number >= 1 <= 4) or appropriate quantity of player\n"OF) : 0;
 	error_code == 2 ? ft_printf(R"ERROR: problem with memory allocation\n"OF) : 0;
@@ -66,7 +78,7 @@ struct s_op	op_tab[16 + 1] =
 	{0, 0, {0}, 0, 0, 0, NULL, 0, 0}
 };
 
-void	vm_init(t_vm *vm)
+void		vm_init(t_vm *vm)
 {
 	vm->players = NULL;
 	if (!(vm->arena = (unsigned char *)malloc(sizeof(unsigned char)
@@ -92,7 +104,7 @@ void	vm_init(t_vm *vm)
 		error_messages(2, vm);
 }
 
-void			vm_free(t_vm *vm)
+void		vm_free(t_vm *vm)
 {
 	int		i;
 	t_exec	*cache;

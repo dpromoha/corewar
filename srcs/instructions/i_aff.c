@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   i_aff.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/20 16:36:56 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/20 16:36:57 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-static	int	read_for_aff(t_vm *cor)
+static int			read_for_aff(t_vm *cor)
 {
 	int size;
 
@@ -8,7 +20,8 @@ static	int	read_for_aff(t_vm *cor)
 	size = ft_strlen(cor->aff_print);
 	if (size == BUFF_SIZE)
 	{
-		if (!(cor->aff_print = (char*)realloc(cor->aff_print, size + BUFF_SIZE)))
+		if (!(cor->aff_print =
+					(char*)realloc(cor->aff_print, size + BUFF_SIZE)))
 			error_messages(9, cor);
 	}
 	ft_bzero(cor->aff_print + size, BUFF_SIZE);
@@ -30,7 +43,7 @@ int					treg_to_int(unsigned char *reg)
 	return (result);
 }
 
-void		i_aff(t_vm *cor, t_exec *proc)
+void				i_aff(t_vm *cor, t_exec *proc)
 {
 	int		tmp;
 	char	c;

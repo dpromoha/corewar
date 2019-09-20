@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_flag_n.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/20 16:33:47 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/20 16:34:09 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 static void	step_back(t_champion **players, int i)
@@ -41,7 +53,7 @@ static void	error_flag_n(t_vm *vm, int i, int copy)
 
 void		check_flag_n(t_vm *vm)
 {
-	t_champion 	*swap;
+	t_champion	*swap;
 	int			i;
 	int			copy;
 
