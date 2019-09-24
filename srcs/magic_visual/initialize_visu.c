@@ -1,5 +1,18 @@
 #include "corewar.h"
 
+void		visual_corewar(t_vm *vm)
+{
+	if (vm->take_v)
+		visualization(vm);
+	else
+	{
+		ft_printf("Introducing contestants...\n");
+		who_play(vm);
+		execute(vm);
+		who_is_winner(vm);
+	}
+}
+
 static void	start_set_windows(void)
 {
 	initscr();

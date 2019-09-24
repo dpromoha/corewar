@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flags.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/24 09:10:29 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/24 09:10:30 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void		who_is_winner(t_vm *vm)
@@ -51,24 +63,23 @@ static int	read_flag_d(t_vm *vm, int *ac, char ***av)
 	return (0);
 }
 
+static int	size_of_dump(int size, int *ac, t_vm *vm, char ***av)
+{
+	vm->flag = size;
+	if (*ac < 2)
+		return (-1);
+	read_flag_d(vm, ac, av);
+	return (0);
+}
+
 int			flags(t_vm *vm, int *ac, char ***av)
 {
 	while (*ac && (*av)[0][0] == '-')
 	{
 		if (ft_strequ((*av)[0], "-dump"))
-		{
-			vm->flag = 32;
-			if (*ac < 2)
-				return (-1);
-			read_flag_d(vm, ac, av);
-		}
+			size_of_dump(32, ac, vm, av);
 		else if (ft_strequ((*av)[0], "-d"))
-		{
-			vm->flag = 64;
-			if (*ac < 2)
-				return (-1);
-			read_flag_d(vm, ac, av);
-		}
+			size_of_dump(64, ac, vm, av);
 		else if (ft_strequ((*av)[0], "-v"))
 		{
 			vm->take_v = 1;

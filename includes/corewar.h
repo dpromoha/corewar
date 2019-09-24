@@ -27,11 +27,13 @@ void				vm_init(t_vm *cor);
 void				error_messages(int error_code, t_vm *cor);
 int					flags(t_vm *cor, int *ac, char ***av);
 void				read_cor(t_vm *cor, int ac, char **av);
-int					get_prog_name(t_champion *champ, int fd);
-unsigned int		get_prog_size(int fd);
-int					get_comment(t_champion *champ, int fd);
+int					check_name(t_champion *champ, int fd);
+unsigned int		check_size(int fd);
+void				num_flag(t_vm *vm, char **av, int ac, int i);
+int					check_comment(t_champion *champ, int fd);
 unsigned char		*get_execess_code_player(int fd, unsigned int size);
 void				check_flag_n(t_vm *cor);
+t_champion			*champ_error(char *str, int numb);
 void				place_for_player(t_vm *cor);
 void				who_play(t_vm *cor);
 void				execute(t_vm *cor);
@@ -67,6 +69,9 @@ void				vm_free(t_vm *cor);
 void				end_of_program(t_vm *cor);
 void				free_struct_player(t_champion **champ);
 t_arg_type			get_arg_type(unsigned char argcode, int i);
+void				visual_and_dump(t_vm *vm);
+void				flag_is_dump(t_vm *vm);
 void				get_arg(t_vm *cor, t_exec *proc, int *arg_op_posit, int i);
+void				visual_corewar(t_vm *vm);
 
 #endif

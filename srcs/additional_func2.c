@@ -6,7 +6,7 @@
 /*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 16:33:13 by dpromoha          #+#    #+#             */
-/*   Updated: 2019/09/20 16:33:24 by dpromoha         ###   ########.fr       */
+/*   Updated: 2019/09/24 09:48:35 by dpromoha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,19 @@ void	free_struct_player(t_champion **player)
 		free((*player)->process_code_player);
 	free(*player);
 	*player = NULL;
+}
+
+void	num_flag(t_vm *vm, char **av, int ac, int i)
+{
+	if (ft_strequ(av[i], "-n"))
+	{
+		if (i + 2 < ac)
+		{
+			if (ft_atoi(av[i + 1]) == 0)
+				error_messages(7, vm);
+		}
+		else
+			error_messages(10, vm);
+		vm->what_is_n_player -= 2;
+	}
 }

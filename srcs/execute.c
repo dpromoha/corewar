@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execute.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/24 09:23:04 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/24 09:23:05 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 static void	remove_death_proc(t_vm *vm)
@@ -53,10 +65,9 @@ static void	init_instr(t_vm *vm, t_exec *proc)
 	}
 }
 
-static void	visual_and_dump(t_vm *vm)
+void		flag_is_dump(t_vm *vm)
 {
 	int		i;
-	int		c;
 
 	if (vm->cycle_to_die <= 0 ||
 		vm->new_cycles == (unsigned int)vm->cycle_to_die)
@@ -72,20 +83,6 @@ static void	visual_and_dump(t_vm *vm)
 	}
 	if (vm->dump_using && vm->cycles == vm->cycle_dump)
 		dump_flag_size(vm);
-	if (vm->take_v)
-	{
-		while (vm->visu->in_move == 0)
-		{
-			c = wgetch(stdscr);
-			if (c == ' ')//start game
-			{
-				vm->visu->in_move = 1;
-				how_fast(vm);
-			}
-			build_map(vm, c);
-		}
-		how_fast(vm);
-	}
 }
 
 void		execute(t_vm *vm)
@@ -108,7 +105,8 @@ void		execute(t_vm *vm)
 					vm->op_tab[cache->operation_code - 1].f(vm, cache);
 				else
 					cache->length_step = 1;
-				cache->op_posit = modificate_index(cache->op_posit + cache->length_step);
+				cache->op_posit =
+				modificate_index(cache->op_posit + cache->length_step);
 			}
 			cache = cache->next;
 		}

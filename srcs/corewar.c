@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   corewar.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/24 09:23:20 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/24 09:23:27 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-//29 lines
 int			main(int ac, char **av)
 {
 	t_vm	vm;
@@ -20,15 +31,7 @@ int			main(int ac, char **av)
 			read_cor(&vm, ac, av);
 			check_flag_n(&vm);
 			place_for_player(&vm);
-			if (vm.take_v)
-				visualization(&vm);
-			else
-			{
-				ft_printf("Introducing contestants...\n");
-				who_play(&vm);
-				execute(&vm);
-				who_is_winner(&vm);
-			}
+			visual_corewar(&vm);
 		}
 	}
 	vm_free(&vm);

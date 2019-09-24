@@ -6,7 +6,7 @@
 /*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 16:31:02 by dpromoha          #+#    #+#             */
-/*   Updated: 2019/09/20 16:32:53 by dpromoha         ###   ########.fr       */
+/*   Updated: 2019/09/24 09:36:45 by dpromoha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,18 @@ OPTIONS:\n\
 
 void		error_messages(int error_code, t_vm *vm)
 {
-	error_code == 1 ? ft_printf(R"ERROR: wrong number of player (need number >= 1 <= 4) or appropriate quantity of player\n"OF) : 0;
-	error_code == 2 ? ft_printf(R"ERROR: problem with memory allocation\n"OF) : 0;
+	error_code == 1 ? ft_printf(R"ERROR: wrong number of player \
+			(need number >= 1 <= 4) or appropriate quantity of player\n"OF) : 0;
+	error_code == 2 ? ft_printf(R"ERROR: \
+			problem with memory allocation\n"OF) : 0;
 	error_code == 4 ? ft_printf(R"ERROR: problem with player\n"OF) : 0;
-	error_code == 5 ? ft_printf(R"ERROR: number of processes more than need\n"OF) : 0;
-	error_code == 6 ? ft_printf(R"ERROR: too many players, PLEASE, write less than 5\n"OF) : 0;
-	error_code == 7 ? ft_printf(R"ERROR: number of player can't be 0, PLEASE, change number (> 0 && < 5)\n"OF) : 0;
+	error_code == 5 ? ft_printf(R"ERROR: \
+			number of processes more than need\n"OF) : 0;
+	error_code == 6 ? ft_printf(R"ERROR: too many players\n"OF) : 0;
+	error_code == 7 ? ft_printf(R"ERROR: change number of player\n"OF) : 0;
 	error_code == 8 ? ft_printf(R"ERROR: players less than 1\n"OF) : 0;
 	error_code == 9 ? ft_printf(R"ERROR: incorrect use of flag -n\n"OF) : 0;
-	error_code == 10 ? ft_printf(R"ERROR: number AND player of player must be AFTER flag -n\n"OF) : 0;
+	error_code == 10 ? ft_printf(R"ERROR: num & player AFTER flag -n\n"OF) : 0;
 	vm_free(vm);
 }
 

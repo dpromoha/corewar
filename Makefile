@@ -14,7 +14,7 @@ INDIR	=	instructions/
 
 VISUDIR	=	magic_visual/
 
-SRC		= 	corewar.c additional_func.c validation.c execute.c flags.c read_cor.c \
+SRC		= 	corewar.c additional_func.c validation.c validation_player.c execute.c flags.c read_cor.c \
 		additional_func2.c check_flag_n.c place_for_player.c \
 		$(addprefix $(INDIR), $(IN)) \
 		$(addprefix $(VISUDIR), $(VISU))

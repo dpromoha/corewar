@@ -26,7 +26,7 @@ void			who_play(t_vm *vm)
 	}
 }
 
-int				get_prog_name(t_champion *champ, int fd)
+int				check_name(t_champion *champ, int fd)
 {
 	int		copy;
 
@@ -38,7 +38,7 @@ int				get_prog_name(t_champion *champ, int fd)
 	return (0);
 }
 
-unsigned int	get_prog_size(int fd)
+unsigned int	check_size(int fd)
 {
 	unsigned int	prog_size;
 	unsigned char	buf[5];
@@ -55,7 +55,7 @@ unsigned int	get_prog_size(int fd)
 	return (prog_size);
 }
 
-int				get_comment(t_champion *champ, int fd)
+int				check_comment(t_champion *champ, int fd)
 {
 	int		copy;
 

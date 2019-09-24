@@ -65,3 +65,24 @@ void	building_start(t_vm *vm)
 	wattroff(vm->visu->arena, COLOR_PAIR(GRAY_CURSOR));
 	wrefresh(vm->visu->arena);
 }
+
+void		visual_and_dump(t_vm *vm)
+{
+	int		c;
+
+	flag_is_dump(vm);
+	if (vm->take_v)
+	{
+		while (vm->visu->in_move == 0)
+		{
+			c = wgetch(stdscr);
+			if (c == ' ')
+			{
+				vm->visu->in_move = 1;
+				how_fast(vm);
+			}
+			build_map(vm, c);
+		}
+		how_fast(vm);
+	}
+}

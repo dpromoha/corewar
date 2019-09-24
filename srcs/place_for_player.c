@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   place_for_player.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/24 09:10:00 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/24 09:10:01 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void		init_new_proc(t_exec *process_new, t_vm *vm, int i, int numb)
@@ -29,8 +41,8 @@ static void	location(t_vm *vm, int i)
 
 static void	error_map(t_vm *vm, int numb)
 {
-	int i;
-	t_exec *process_new;
+	int		i;
+	t_exec	*process_new;
 
 	i = -1;
 	while (++i < vm->what_is_n_player)
