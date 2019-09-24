@@ -6,13 +6,27 @@
 /*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 16:40:53 by dpromoha          #+#    #+#             */
-/*   Updated: 2019/09/20 16:43:50 by dpromoha         ###   ########.fr       */
+/*   Updated: 2019/09/24 08:49:23 by dpromoha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static t_arg_type	get_arg_type(unsigned char argcode, int i)
+static void		if_is_dir_args(t_vm *vm, int *arg_op_posit, t_exec *proc, int i)
+{
+	vm->args[i].val =
+			(vm->op_tab[proc->operation_code - 1].dir_size == 4) ?
+				return_int_size(vm, proc->op_posit + *arg_op_posit, DIR_SIZE)
+				: (short)(vm->arena[modificate_index(proc->op_posit +
+							*arg_op_posit)] * 256
+				+ vm->arena[modificate_index(proc->op_posit +
+					*arg_op_posit + 1)]);
+	*arg_op_posit +=
+		(vm->op_tab[proc->operation_code - 1].dir_size == 0) ? 4
+		: vm->op_tab[proc->operation_code - 1].dir_size;
+}
+
+t_arg_type		get_arg_type(unsigned char argcode, int i)
 {
 	unsigned char	argcode_bits;
 	unsigned char	type;
@@ -28,8 +42,7 @@ static t_arg_type	get_arg_type(unsigned char argcode, int i)
 	return (0);
 }
 
-//27 lines
-static void			get_arg(t_vm *cor, t_exec *proc, int *arg_op_posit, int i)
+void			get_arg(t_vm *cor, t_exec *proc, int *arg_op_posit, int i)
 {
 	if (cor->args[i].type == T_REG)
 	{
@@ -38,18 +51,7 @@ static void			get_arg(t_vm *cor, t_exec *proc, int *arg_op_posit, int i)
 		*arg_op_posit += 1;
 	}
 	else if (cor->args[i].type == T_DIR)
-	{
-		cor->args[i].val =
-			(cor->op_tab[proc->operation_code - 1].dir_size == 4) ?
-				return_int_size(cor, proc->op_posit + *arg_op_posit, DIR_SIZE)
-				: (short)(cor->arena[modificate_index(proc->op_posit +
-							*arg_op_posit)] * 256
-				+ cor->arena[modificate_index(proc->op_posit +
-					*arg_op_posit + 1)]);
-		*arg_op_posit +=
-			(cor->op_tab[proc->operation_code - 1].dir_size == 0) ? 4
-				: cor->op_tab[proc->operation_code - 1].dir_size;
-	}
+		if_is_dir_args(cor, arg_op_posit, proc, i);
 	else if (cor->args[i].type == T_IND)
 	{
 		cor->args[i].val = (short)(cor->arena[modificate_index(proc->op_posit +
@@ -60,31 +62,7 @@ static void			get_arg(t_vm *cor, t_exec *proc, int *arg_op_posit, int i)
 	}
 }
 
-int					check_argument(t_vm *cor, t_exec *proc)
-{
-	int				arg_op_posit;
-	int				i;
-	int				valid;
-
-	arg_op_posit = 2;
-	valid = 1;
-	i = -1;
-	while (++i < cor->op_tab[proc->operation_code - 1].how_much_arg)
-	{
-		cor->args[i].type =
-			get_arg_type(cor->arena[modificate_index(proc->op_posit
-				+ 1)], i);
-		get_arg(cor, proc, &arg_op_posit, i);
-		if (!(cor->args[i].type & cor->op_tab[proc->operation_code - 1].args[i])
-				|| (cor->args[i].type == T_REG && (cor->args[i].val <= 0
-						|| cor->args[i].val > REG_NUMBER)))
-			valid = 0;
-	}
-	proc->length_step = arg_op_posit;
-	return (valid);
-}
-
-void				i_lldi(t_vm *cor, t_exec *proc)
+void			i_lldi(t_vm *cor, t_exec *proc)
 {
 	t_argument	a;
 	int			sum;
@@ -108,7 +86,7 @@ void				i_lldi(t_vm *cor, t_exec *proc)
 	}
 }
 
-void				i_lld(t_vm *cor, t_exec *proc)
+void			i_lld(t_vm *cor, t_exec *proc)
 {
 	t_argument	a;
 

@@ -1,10 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   i_st_sti.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/24 08:38:31 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/24 08:40:16 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-/*
-** Loads the content of the map in a register.
-*/
-
-void	to_map(unsigned char *reg, void *content)
+void				to_map(unsigned char *reg, void *content)
 {
 	int	i;
 
@@ -16,11 +24,6 @@ void	to_map(unsigned char *reg, void *content)
 	}
 }
 
-/*
-** Function that returns the true numeric value of an arguments depending on its
-** type
-*/
-
 int					what_is_argument(t_vm *cor, t_exec *proc, t_arg arg,
 		int exist)
 {
@@ -29,7 +32,8 @@ int					what_is_argument(t_vm *cor, t_exec *proc, t_arg arg,
 	if (arg.type == T_IND)
 	{
 		if (exist)
-			return (return_int_size(cor, proc->op_posit + arg.val % OP_POSIT_MOD, 4));
+			return (return_int_size(cor, proc->op_posit +
+						arg.val % OP_POSIT_MOD, 4));
 		else
 			return (return_int_size(cor, proc->op_posit + arg.val, 4));
 	}
@@ -38,11 +42,8 @@ int					what_is_argument(t_vm *cor, t_exec *proc, t_arg arg,
 	return (0);
 }
 
-/*
-** Stores the content of a register on the map.
-*/
-
-void	mapcpy(t_vm *cor, t_exec *proc, unsigned int op_posit, void *content)
+void				mapcpy(t_vm *cor, t_exec *proc, unsigned int op_posit,
+		void *content)
 {
 	int	i;
 
@@ -61,7 +62,7 @@ void	mapcpy(t_vm *cor, t_exec *proc, unsigned int op_posit, void *content)
 	}
 }
 
-void		i_sti(t_vm *cor, t_exec *proc)
+void				i_sti(t_vm *cor, t_exec *proc)
 {
 	t_argument	a;
 
@@ -74,7 +75,7 @@ void		i_sti(t_vm *cor, t_exec *proc)
 	}
 }
 
-void		i_st(t_vm *cor, t_exec *proc)
+void				i_st(t_vm *cor, t_exec *proc)
 {
 	t_argument	a;
 

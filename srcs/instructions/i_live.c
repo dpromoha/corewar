@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   i_live.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/24 08:34:13 by dpromoha          #+#    #+#             */
+/*   Updated: 2019/09/24 08:35:31 by dpromoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-int		return_int_size(t_vm *cor, int op_posit, int size)
+int				return_int_size(t_vm *cor, int op_posit, int size)
 {
 	int		i;
 	int		number;
@@ -26,7 +38,18 @@ static void		print_alive(t_argument a, t_vm *cor, int i)
 	write(1, " is alive\n", 10);
 }
 
-void		i_live(t_vm *cor, t_exec *proc)
+static void		visual_live(t_vm *vm, t_exec *proc, t_argument a)
+{
+	if (vm->take_v)
+	{
+		vm->visu->attr_arena[proc->op_posit].owner =
+			vm->players[a.result]->numb;
+		vm->visu->attr_arena[proc->op_posit].live_bright =
+			LIVE_BRIGHT_TIME;
+	}
+}
+
+void			i_live(t_vm *cor, t_exec *proc)
 {
 	t_argument	a;
 
@@ -45,11 +68,7 @@ void		i_live(t_vm *cor, t_exec *proc)
 				break ;
 			else if (!cor->take_v)
 				print_alive(a, cor, a.result);
-			if (cor->take_v)
-			{
-				cor->visu->attr_arena[proc->op_posit].owner = cor->players[a.result]->numb;
-				cor->visu->attr_arena[proc->op_posit].live_bright = LIVE_BRIGHT_TIME;
-			}
+			visual_live(cor, proc, a);
 			break ;
 		}
 	}

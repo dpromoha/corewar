@@ -66,5 +66,7 @@ void				dump_flag_size(t_vm *cor);
 void				vm_free(t_vm *cor);
 void				end_of_program(t_vm *cor);
 void				free_struct_player(t_champion **champ);
+t_arg_type			get_arg_type(unsigned char argcode, int i);
+void				get_arg(t_vm *cor, t_exec *proc, int *arg_op_posit, int i);
 
 #endif

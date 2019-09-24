@@ -28,6 +28,30 @@ static int			read_for_aff(t_vm *cor)
 	return (size);
 }
 
+int					check_argument(t_vm *cor, t_exec *proc)
+{
+	int				arg_op_posit;
+	int				i;
+	int				valid;
+
+	arg_op_posit = 2;
+	valid = 1;
+	i = -1;
+	while (++i < cor->op_tab[proc->operation_code - 1].how_much_arg)
+	{
+		cor->args[i].type =
+			get_arg_type(cor->arena[modificate_index(proc->op_posit
+				+ 1)], i);
+		get_arg(cor, proc, &arg_op_posit, i);
+		if (!(cor->args[i].type & cor->op_tab[proc->operation_code - 1].args[i])
+				|| (cor->args[i].type == T_REG && (cor->args[i].val <= 0
+						|| cor->args[i].val > REG_NUMBER)))
+			valid = 0;
+	}
+	proc->length_step = arg_op_posit;
+	return (valid);
+}
+
 int					treg_to_int(unsigned char *reg)
 {
 	int		i;
