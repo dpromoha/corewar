@@ -87,28 +87,28 @@ void		flag_is_dump(t_vm *vm)
 
 void		execute(t_vm *vm)
 {
-	t_exec *cache;
+	t_exec *alive_process;
 
-	while ((cache = vm->procs))
+	while ((alive_process = vm->procs))
 	{
 		vm->cycles++;
 		vm->new_cycles++;
-		while (cache)
+		while (alive_process)
 		{
 			if (vm->take_v)
-				vm->visu->attr_arena[cache->op_posit].cursor = true;
-			if (!cache->cycle_before_instr)
-				init_instr(vm, cache);
-			if (!(--(cache->cycle_before_instr)))
+				vm->visu->attr_arena[alive_process->op_posit].cursor = true;
+			if (!alive_process->cycle_before_instr)
+				init_instr(vm, alive_process);
+			if (!(--(alive_process->cycle_before_instr)))
 			{
-				if (cache->operation_code && cache->operation_code <= 16)
-					vm->op_tab[cache->operation_code - 1].f(vm, cache);
+				if (alive_process->operation_code && alive_process->operation_code <= 16)
+					vm->op_tab[alive_process->operation_code - 1].f(vm, alive_process);
 				else
-					cache->length_step = 1;
-				cache->op_posit =
-				modificate_index(cache->op_posit + cache->length_step);
+					alive_process->length_step = 1;
+				alive_process->op_posit =
+				modificate_index(alive_process->op_posit + alive_process->length_step);
 			}
-			cache = cache->next;
+			alive_process = alive_process->next;
 		}
 		visual_and_dump(vm);
 	}

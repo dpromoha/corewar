@@ -59,7 +59,7 @@ static int	read_flag_d(t_vm *vm, int *ac, char ***av)
 	else
 	{
 		vm->dump_using = !vm->take_v;
-		vm->cycle_dump = help_atoi((*av)[1]);//
+		vm->cycle_dump = help_atoi((*av)[1]);
 		if (vm->cycle_dump == 0)
 		{
 			ft_printf(R"ERROR: number of cycle CAN`T be less than 1\n"OF);
