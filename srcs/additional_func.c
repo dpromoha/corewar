@@ -19,22 +19,19 @@ void		help_op(void)
 [\033[1;36m-n\033[0m NUMB] [\033[1;32m-v\033[0m PLAYER] \
 [\033[1;32m-s\033[0m PLAYER]\n\
 OPTIONS:\n\
-\t[\033[1;32m-v	\033[0m P]\tsee a magic vizualization\n\
-\t[\033[1;32m-s	\033[0m P]\tsilent mode\n\
 \t[\033[1;35m-dump	\033[0m C]\tdump memory(32 octets) after N cycles\n\
 \t[\033[1;35m-d	\033[0m C]\tdump memory(64 octets) after N cycles\n\
+\t[\033[1;32m-v	\033[0m P]\tsee a magic vizualization\n\
+\t[\033[1;32m-s	\033[0m P]\tsilent mode\n\
 \t[\033[1;36m-n	\033[0m N]\tset the number of player\n");
 }
 
 void		error_messages(int error_code, t_vm *vm)
 {
-	error_code == 1 ? ft_printf(R"ERROR: wrong number of player \
-			(need number >= 1 <= 4) or appropriate quantity of player\n"OF) : 0;
-	error_code == 2 ? ft_printf(R"ERROR: \
-			problem with memory allocation\n"OF) : 0;
+	error_code == 1 ? ft_printf(R"ERROR: wrong number of player\n"OF) : 0;
+	error_code == 2 ? ft_printf(R"ERROR: problem with memory\n"OF) : 0;
 	error_code == 4 ? ft_printf(R"ERROR: problem with player\n"OF) : 0;
-	error_code == 5 ? ft_printf(R"ERROR: \
-			number of processes more than need\n"OF) : 0;
+	error_code == 5 ? ft_printf(R"ERROR: N of processes more than need\n"OF) : 0;
 	error_code == 6 ? ft_printf(R"ERROR: too many players\n"OF) : 0;
 	error_code == 7 ? ft_printf(R"ERROR: change number of player\n"OF) : 0;
 	error_code == 8 ? ft_printf(R"ERROR: players less than 1\n"OF) : 0;
