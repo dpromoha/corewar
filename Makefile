@@ -77,3 +77,6 @@ re: fclean $(NAME)
 norm:
 	norminette -R CheckForbiddenSourceHeader
 	@echo "\033[31mGLORY TO NORMINETTE\033[0m"
+
+comp:
+	@gcc -g $(FLAGS) $(addprefix $(SRCDIR), $(SRC)) libft/libftprintf.a -lncurses -o debug
