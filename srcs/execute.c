@@ -87,28 +87,28 @@ void		flag_is_dump(t_vm *vm)
 
 void		execute(t_vm *vm)
 {
-	t_exec *alive_process;
+	t_exec *a_p;
 
-	while ((alive_process = vm->procs))
+	while ((a_p = vm->procs))
 	{
 		vm->cycles++;
 		vm->new_cycles++;
-		while (alive_process)
+		while (a_p)
 		{
 			if (vm->take_v)
-				vm->visu->attr_arena[alive_process->op_posit].cursor = true;
-			if (!alive_process->cycle_before_instr)
-				init_instr(vm, alive_process);
-			if (!(--(alive_process->cycle_before_instr)))
+				vm->visu->attr_arena[a_p->op_posit].cursor = true;
+			if (!a_p->cycle_before_instr)
+				init_instr(vm, a_p);
+			if (!(--(a_p->cycle_before_instr)))
 			{
-				if (alive_process->operation_code && alive_process->operation_code <= 16)
-					vm->op_tab[alive_process->operation_code - 1].f(vm, alive_process);
+				if (a_p->operation_code && a_p->operation_code <= 16)
+					vm->op_tab[a_p->operation_code - 1].f(vm, a_p);
 				else
-					alive_process->length_step = 1;
-				alive_process->op_posit =
-				modificate_index(alive_process->op_posit + alive_process->length_step);
+					a_p->length_step = 1;
+				a_p->op_posit =
+				modificate_index(a_p->op_posit + a_p->length_step);
 			}
-			alive_process = alive_process->next;
+			a_p = a_p->next;
 		}
 		visual_and_dump(vm);
 	}

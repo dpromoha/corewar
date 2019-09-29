@@ -6,7 +6,7 @@
 /*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 16:31:02 by dpromoha          #+#    #+#             */
-/*   Updated: 2019/09/24 09:36:45 by dpromoha         ###   ########.fr       */
+/*   Updated: 2019/09/29 13:22:40 by dpromoha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		error_messages(int error_code, t_vm *vm)
 	error_code == 1 ? ft_printf(R"ERROR: wrong number of player\n"OF) : 0;
 	error_code == 2 ? ft_printf(R"ERROR: problem with memory\n"OF) : 0;
 	error_code == 4 ? ft_printf(R"ERROR: problem with player\n"OF) : 0;
-	error_code == 5 ? ft_printf(R"ERROR: N of processes more than need\n"OF) : 0;
+	error_code == 5 ? ft_printf(R"ERROR: N of processes too much\n"OF) : 0;
 	error_code == 6 ? ft_printf(R"ERROR: too many players\n"OF) : 0;
 	error_code == 7 ? ft_printf(R"ERROR: change number of player\n"OF) : 0;
 	error_code == 8 ? ft_printf(R"ERROR: players less than 1\n"OF) : 0;

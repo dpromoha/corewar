@@ -6,7 +6,7 @@
 /*   By: dpromoha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 14:24:39 by dpromoha          #+#    #+#             */
-/*   Updated: 2019/09/01 12:59:47 by dpromoha         ###   ########.fr       */
+/*   Updated: 2019/09/29 13:18:09 by dpromoha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int					help_atoi(const char *s);
 char				*ft_strndup(const char *s1, size_t n);
 char				**ft_strsplit(char const *s, char c);
 int					ft_tolower(int c);
-int     			ft_space(const char c);
+int					ft_space(const char c);
 int					ft_toupper(int c);
 int					ft_unsignint(char *str);
 int					ft_isalnum(int c);
