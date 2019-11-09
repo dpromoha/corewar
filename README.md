@@ -1,4 +1,4 @@
-# vm_visual
+# corewar
 
 Corewar is a final project on algorithm branch for school 42.
 This is my part of project, where I have to build a virtual machine where 'champions' written in an abstract assembly language fight over a defined memory space. Also I used a library *ncurses* for visualization.
